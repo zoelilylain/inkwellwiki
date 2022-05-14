@@ -54,6 +54,11 @@ export const editor = (state) => {
           result: promptImageUpload,
         },
         {
+          title: 'Insert GIF from File',
+          icon: 'GIF',
+          result: promptGIFUpload,
+        },
+        {
           title: 'Add Existing Image',
           icon: '📎',
           result: () => document.getElementById('gal').showModal(),
@@ -89,6 +94,24 @@ export const editor = (state) => {
           exec('insertHTML', `<p><img src="${result}#${id}"></p>`);
         }
       });
+    });
+  }
+
+  function promptGIFUpload () {
+    if (!confirm('Inserting a GIF will increase your wiki\'s file size substantially. Continue?')) return;
+    uploadFile('image/*', file => {
+      var reader  = new FileReader();
+
+      const editor = document.getElementsByClassName('pell-content')[0];
+      if (document.activeElement !== editor) editor.focus();
+
+      reader.addEventListener("load", function () {
+        var base64gif = reader.result; // your gif in base64 here
+        console.log(base64gif);
+        exec('insertHTML', `<p><img src="${base64gif}"></p>`);
+      }, false);
+
+      reader.readAsDataURL(file);
     });
   }
 
