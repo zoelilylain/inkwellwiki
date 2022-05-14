@@ -1,9 +1,9 @@
 {
-  "name": "featherwiki",
+  "name": "inkwellwiki",
   "version": "1.1.0",
-  "title": "Feather Wiki",
+  "title": "Inkwell Wiki",
   "description": "A lightweight quine for simple, self-contained wikis",
-  "homepage": "https://alamantus.codeberg.page/FeatherWiki",
+  "homepage": "https://github.com/zoelilylain/inkwellwiki",
   "scripts": {
     "start": "node scripts/develop.js",
     "build": "node scripts/build.js",
